@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+	<style type="text/css">
+		@font-face {
+			font-family: 'tarkov';
+			src: url('Neusa-Medium.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+		body{
+			font-family: tarkov;
+			background: black;
+			width: 100%;
+			height: 100vh;
+			background-size: cover;
+			background-repeat: no-repeat;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			font-size: 1.5rem;
+		}
+			.button,.escape-from,.from{
+				color: #c5c3b2;
+				cursor: pointer;
+				border-radius: 6px;
+			}
+			.from{
+				text-transform: uppercase;
+				font-size: 2rem;
+			}
+			.button-1{
+				margin-top: 24px;
+				text-transform: uppercase;
+				padding: 3px 3px;
+			}
+			.button:hover{
+				background: #c5c3b2;
+				color: black;
+			}
+			.escape-from{
+				padding-top: 12px;
+				height: 26px;
+				text-align: left;
+			}
+	</style>
+	<span class="from" >
+		Escape From Tarkov Randomizer
+	</span>	
+	<span class="button button-1">
+		Ну чего парни куда идем?
+	</span>
+	<span class="escape-from">
+	</span>
+	<script type="text/javascript">
+		function getRandomInt(max) {
+  			return Math.floor(Math.random() * Math.floor(max));
+	}
+		document.addEventListener('DOMContentLoaded', function(){	
+			var run = document.querySelector(".button-1")
+			var escapeFrom = document.querySelector(".escape-from")
+			var locations = ['Лесок','Таможку все зачистим','Таможку все зачистим','Завод','Берег','Лабу спокойно','Лабу Гва Гва Гва!!','Резерв только без ааа там стреляют бежим!','Резерв босса валить','Развязон киллу валить','Развязон внутрь ток не суемся','Лаба на стиле с дробашами','Лесок без ТЕПЛАКОВ!','завод с кедрами!','Щекотун рейд на таможку только ПП','Error 208 - bad region']
+			run.addEventListener('click',function () {
+				window.clearInterval(print);
+				let	location = locations[getRandomInt(10)];
+				printing(location);
+			})
+			 function printing(location) {
+	          var j = 0;
+	          var text=''
+	          location = location=='Error 208 - bad region'?location :'Погнали на ' + location;
+			  escapeFrom.innerHTML = "";
+	          escapeFrom.style.width=10*location.length+'px';
+	         window.print = setInterval(() => {
+	          text = text + location[j] ;
+	          console.log(text)
+	          escapeFrom.innerHTML = "";
+	          escapeFrom.append(text);
+	          j++;
+	          if(j == location.length){
+	            window.clearInterval(print);
+	          }
+	        }, 30);
+	      }
+		})
+	</script>
+</body>
+</html>
